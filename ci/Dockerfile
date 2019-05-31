@@ -1,3 +1,5 @@
+# Installs JRE, Go, Node, GCloud SDK, and other build essentails in
+# a stretch environment.
 FROM debian:stretch
 
 WORKDIR /tmp
@@ -9,7 +11,8 @@ RUN apt-get install -y \
   ca-certificates \
   curl \
   gnupg2 \
-  software-properties-common
+  software-properties-common \
+  build-essential
 
 # Add keys
 RUN curl -sSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
@@ -22,7 +25,13 @@ RUN echo "deb http://packages.cloud.google.com/apt cloud-sdk-stretch main" | tee
 
 # Install
 RUN apt-get update
-RUN apt-get install -y git-all default-jre nodejs google-cloud-sdk google-cloud-sdk-datastore-emulator
+RUN apt-get install -y \
+  git-all \
+  default-jre \
+  nodejs \
+  google-cloud-sdk \
+  google-cloud-sdk-datastore-emulator \
+  google-cloud-sdk-app-engine-go
 
 # Install Go, which is not available via apt
 RUN curl -O "https://dl.google.com/go/go1.11.10.linux-amd64.tar.gz"
