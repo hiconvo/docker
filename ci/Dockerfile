@@ -27,14 +27,12 @@ RUN echo "deb http://packages.cloud.google.com/apt cloud-sdk-stretch main" | tee
 RUN apt-get update
 RUN apt-get install -y \
   git-all \
-  default-jre \
   nodejs \
   google-cloud-sdk \
-  google-cloud-sdk-datastore-emulator \
   google-cloud-sdk-app-engine-go
 
 # Install Go, which is not available via apt
-RUN curl -O "https://dl.google.com/go/go1.11.10.linux-amd64.tar.gz"
-RUN tar -C /usr/local -xzf go1.11.10.linux-amd64.tar.gz
-RUN rm go1.11.10.linux-amd64.tar.gz
+RUN curl -O "https://dl.google.com/go/go1.13.4.linux-amd64.tar.gz"
+RUN tar -C /usr/local -xzf go1.13.4.linux-amd64.tar.gz
+RUN rm go1.13.4.linux-amd64.tar.gz
 ENV PATH="${PATH}:/usr/local/go/bin"
