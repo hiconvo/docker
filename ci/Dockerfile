@@ -1,6 +1,6 @@
-# Installs JRE, Go, Node, GCloud SDK, and other build essentails in
+# Installs Go, Node, GCloud SDK, and other build essentails in
 # a stretch environment.
-FROM debian:stretch
+FROM debian:stretch-slim
 
 WORKDIR /tmp
 
@@ -9,10 +9,9 @@ RUN apt-get update
 RUN apt-get install -y \
   apt-transport-https \
   ca-certificates \
-  curl \
   gnupg2 \
-  software-properties-common \
-  build-essential
+  curl \
+  imagemagick
 
 # Add keys
 RUN curl -sSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
